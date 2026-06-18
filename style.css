@@ -51,8 +51,8 @@ body {
   font-size: 1.25rem;
 }
 .brand img {
-  height: 82px;
-  width: 82px;
+  height: 66px;
+  width: 66px;
   object-fit: contain;
   display: block;
   margin: 0;
@@ -155,8 +155,8 @@ footer p { margin: 0; font-size: .95rem; }
 
   .brand { gap: 10px; align-items: center; }
   .brand img {
-    height: 76px;
-    width: 76px;
+    height: 64px;
+    width: 64px;
     margin: 0;
     align-self: center;
   }
@@ -236,11 +236,11 @@ footer p { margin: 0; font-size: .95rem; }
 }
 
 .brand img {
-  height: 70px;
-  width: 70px;
+  height: 66px;
+  width: 66px;
   object-fit: contain;
   display: block;
-  margin: 0;
+  margin: 3px 0 0 0;
   padding: 0;
   align-self: center;
   transform: translateY(0);
@@ -268,10 +268,10 @@ footer p { margin: 0; font-size: .95rem; }
   }
 
   .brand img {
-    height: 68px;
-    width: 68px;
+    height: 64px;
+    width: 64px;
     display: block;
-    margin: 0;
+    margin: 3px 0 0 0;
     padding: 0;
     align-self: center;
   }
