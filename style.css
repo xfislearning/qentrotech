@@ -69,6 +69,22 @@ body {
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a { color: #dce8f4; text-decoration: none; font-weight: 600; font-size: .95rem; }
 .nav-links a:hover { color: var(--cyan); }
+
+.nav-links a.active {
+  color: var(--cyan);
+  position: relative;
+}
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 3px;
+  background: var(--cyan);
+  border-radius: 2px;
+}
+
 .nav-cta { border: 1px solid rgba(24,214,223,.65); padding: 10px 16px; border-radius: 999px; }
 .menu-toggle {
   display: none;
@@ -279,4 +295,69 @@ footer p { margin: 0; font-size: .95rem; }
   .brand span {
     margin-left: 0;
   }
+}
+
+
+/* --- Apprenticeship Program page --- */
+.apprenticeship-hero {
+  max-width: none;
+  padding-left: max(24px, calc((100vw - 1180px)/2 + 24px));
+  padding-right: max(24px, calc((100vw - 1180px)/2 + 24px));
+  background:
+    radial-gradient(circle at top right, rgba(24,214,223,.22), transparent 34%),
+    linear-gradient(135deg, #f7fbfd 0%, #eaf9fb 100%);
+}
+.apprenticeship-hero p:not(.eyebrow) {
+  max-width: 820px;
+  color: #38506c;
+  font-size: 1.2rem;
+}
+.program-intro .why-list p { margin-top: 0; }
+.two-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 980px; }
+.form-section {
+  display: grid;
+  grid-template-columns: .8fr 1.2fr;
+  gap: 48px;
+  align-items: start;
+}
+.form-copy p { color: #38506c; }
+.form-card label {
+  display: block;
+  margin: 18px 0 8px;
+  font-weight: 800;
+  color: var(--navy);
+}
+.form-card input,
+.form-card textarea,
+.form-card select {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid rgba(6,22,47,.18);
+  border-radius: 14px;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
+}
+.form-card textarea { resize: vertical; }
+.full-button {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+  margin-top: 22px;
+}
+.alt-form-section { padding-top: 40px; }
+
+@media (max-width: 900px) {
+  .form-section,
+  .two-card-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Google Form signup cards --- */
+.signup-card p {
+  color: #38506c;
+}
+.signup-card .full-button {
+  margin-top: 28px;
 }
