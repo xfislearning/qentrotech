@@ -103,6 +103,8 @@ body {
 .hero { background: var(--deep-navy); overflow: hidden; }
 .hero-banner { width: 100%; display: block; }
 
+.hero-mobile-content { display: none; }
+
 .section {
   max-width: 1180px;
   margin: 0 auto;
@@ -225,7 +227,51 @@ footer p { margin: 0; font-size: .95rem; }
 
   .intro, .split, .grid, .steps { grid-template-columns: 1fr; }
   .section { padding: 64px 20px; }
-  .hero-banner { min-height: 220px; object-fit: cover; object-position: left center; }
+  .hero {
+    min-height: 430px;
+    padding: 42px 22px 34px;
+    background-image: linear-gradient(180deg, rgba(2,11,31,.78), rgba(2,11,31,.88)), url("assets/banner.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+  }
+  .hero-banner { display: none; }
+  .hero-mobile-content {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+  }
+  .hero-mobile-content h1 {
+    margin: 0;
+    color: white;
+    font-size: clamp(2rem, 8.4vw, 3rem);
+    line-height: 1.15;
+    letter-spacing: -0.045em;
+  }
+  .hero-mobile-content h1 span { color: var(--cyan); }
+  .hero-mobile-points {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .hero-mobile-points p {
+    margin: 0;
+    padding: 12px 10px;
+    border: 1px solid rgba(24,214,223,.42);
+    border-radius: 14px;
+    background: rgba(2,11,31,.46);
+    color: #f3fbff;
+    font-size: .95rem;
+    line-height: 1.25;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .03em;
+  }
 }
 
 
