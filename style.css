@@ -25,14 +25,15 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(2, 11, 31, 0.88);
+  background: linear-gradient(90deg, #020918 0%, #06162f 58%, #082b46 100%);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(24,214,223,0.18);
 }
 
 .nav {
   max-width: 1180px;
   margin: 0 auto;
+  height: 74px;
   min-height: 74px;
   padding: 0 24px;
   display: flex;
@@ -43,18 +44,45 @@ body {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   color: var(--white);
   text-decoration: none;
   font-weight: 800;
   font-size: 1.25rem;
 }
-.brand img { width: 46px; height: 46px; object-fit: contain; border-radius: 10px; }
+.brand img {
+  height: 82px;
+  width: 82px;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  align-self: center;
+  flex-shrink: 0;
+}
+.brand {
+  line-height: 1;
+}
+.brand span {
+  margin-left: -2px;
+  letter-spacing: -0.02em;
+}
 .nav-links { display: flex; align-items: center; gap: 28px; }
 .nav-links a { color: #dce8f4; text-decoration: none; font-weight: 600; font-size: .95rem; }
 .nav-links a:hover { color: var(--cyan); }
 .nav-cta { border: 1px solid rgba(24,214,223,.65); padding: 10px 16px; border-radius: 999px; }
-.menu-toggle { display: none; background: none; border: 0; color: white; font-size: 1.8rem; }
+.menu-toggle {
+  display: none;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.16);
+  color: white;
+  font-size: 1.55rem;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  line-height: 1;
+  cursor: pointer;
+}
+.menu-toggle:hover { border-color: rgba(24,214,223,.7); }
 
 .hero { background: var(--deep-navy); overflow: hidden; }
 .hero-banner { width: 100%; display: block; }
@@ -118,20 +146,137 @@ footer { background: var(--deep-navy); color: #c6d7e8; text-align: center; paddi
 footer p { margin: 0; font-size: .95rem; }
 
 @media (max-width: 900px) {
-  .menu-toggle { display: block; }
+  .nav {
+    position: relative;
+    height: 74px;
+    min-height: 74px;
+    padding: 0 18px;
+  }
+
+  .brand { gap: 10px; align-items: center; }
+  .brand img {
+    height: 76px;
+    width: 76px;
+    margin: 0;
+    align-self: center;
+  }
+
+  .menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+
   .nav-links {
     position: absolute;
-    top: 74px;
-    left: 0;
-    right: 0;
-    display: none;
+    top: calc(100% + 8px);
+    right: 18px;
+    left: auto;
+    width: min(280px, calc(100vw - 36px));
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 22px 24px 28px;
+    align-items: stretch;
+    gap: 6px;
+    padding: 12px;
     background: rgba(2, 11, 31, .98);
+    border: 1px solid rgba(24,214,223,.22);
+    border-radius: 18px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
   }
-  .nav-links.open { display: flex; }
+
+  .nav-links.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .nav-links a {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .nav-links a:hover {
+    background: rgba(255,255,255,.07);
+  }
+
+  .nav-cta {
+    text-align: center;
+    margin-top: 4px;
+  }
+
   .intro, .split, .grid, .steps { grid-template-columns: 1fr; }
   .section { padding: 64px 20px; }
   .hero-banner { min-height: 220px; object-fit: cover; object-position: left center; }
+}
+
+
+/* --- Qentro logo vertical-centering fix --- */
+.site-header {
+  background: linear-gradient(90deg, #020918 0%, #06162f 58%, #082b46 100%);
+}
+
+.nav {
+  height: 74px;
+  min-height: 74px;
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 74px;
+  line-height: 1;
+  padding: 0;
+  margin: 0;
+}
+
+.brand img {
+  height: 70px;
+  width: 70px;
+  object-fit: contain;
+  display: block;
+  margin: 0;
+  padding: 0;
+  align-self: center;
+  transform: translateY(0);
+  flex-shrink: 0;
+}
+
+.brand span {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0;
+  line-height: 1;
+}
+
+@media (max-width: 900px) {
+  .nav {
+    height: 74px;
+    min-height: 74px;
+    align-items: center;
+  }
+
+  .brand {
+    height: 74px;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .brand img {
+    height: 68px;
+    width: 68px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    align-self: center;
+  }
+
+  .brand span {
+    margin-left: 0;
+  }
 }
