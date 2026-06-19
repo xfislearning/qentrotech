@@ -450,3 +450,36 @@ footer p { margin: 0; font-size: .95rem; }
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%2318d6df' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M12 48h40'/%3E%3Crect x='16' y='34' width='8' height='14'/%3E%3Crect x='30' y='26' width='8' height='22'/%3E%3Crect x='44' y='18' width='8' height='30'/%3E%3Cpath d='M14 26l12-8 10 5 14-14M45 9h5v5'/%3E%3C/svg%3E");
   }
 }
+
+
+/* --- Community initiative callout --- */
+.community-callout {
+  padding-top: 24px;
+}
+.community-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 28px;
+  align-items: center;
+  background: linear-gradient(145deg, #ffffff, #eefbfc);
+}
+.community-card h2 {
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+}
+.community-card p {
+  max-width: 780px;
+  color: #38506c;
+}
+.small-note {
+  font-weight: 800;
+  color: var(--navy) !important;
+  margin-bottom: 0;
+}
+@media (max-width: 900px) {
+  .community-card {
+    grid-template-columns: 1fr;
+  }
+  .community-card .button {
+    width: 100%;
+  }
+}
