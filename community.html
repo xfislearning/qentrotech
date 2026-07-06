@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community | Qentro Apprenticeship Program</title>
+  <meta name="description" content="Qentro's volunteer apprenticeship program connecting experienced professionals with new graduates and career learners." />
+  <link rel="icon" type="image/png" href="assets/q-sign.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="sparkgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1fd0dd"/><stop offset="1" stop-color="#7deac6"/></linearGradient></defs></svg>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="index.html" aria-label="Qentro home">
+      <img src="assets/q-sign.png" alt="Qentro logo" />
+      <b>Qentro</b>
+    </a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="solutions.html">What We Do</a><a href="how-we-work.html">How We Work</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+      <a class="nav-cta" href="assessment.html">Self-Assessment</a>
+    </div>
+  </nav>
+</header>
+<main>
+
+<section class="dark page-hero">
+  <div class="section-inner">
+    <p class="eyebrow"><svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 14.4 9.6 22.5 12 14.4 14.4 12 22.5 9.6 14.4 1.5 12 9.6 9.6Z" fill="url(#sparkgrad)"/></svg> Community Initiative</p>
+    <h1>The Qentro <span class="grad-text">Apprenticeship Program.</span></h1>
+    <p class="lead">A volunteer initiative connecting experienced professionals with new graduates and career learners through practical guidance and career support. It operates independently from Qentro's commercial AI services and is not a paid offering.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="grid cols-2">
+    <article class="card">
+      <span class="tag">Volunteer Mentors</span>
+      <h3>Share what you know.</h3>
+      <p class="muted">Retired, semi-retired, or experienced professionals willing to share career advice, practical knowledge, project feedback, and encouragement.</p>
+      <div class="actions"><button class="button primary community-form-trigger" type="button" data-form="mentor">Volunteer as a mentor</button></div>
+    </article>
+    <article class="card">
+      <span class="tag">New Graduates</span>
+      <h3>Grow with guidance.</h3>
+      <p class="muted">Students and early-career professionals looking for guidance, confidence, workplace understanding, and exposure to real-world professional expectations.</p>
+      <div class="actions"><button class="button primary community-form-trigger" type="button" data-form="apprentice">Sign up as a graduate</button></div>
+    </article>
+  </div>
+  <p class="muted" style="margin-top:30px; max-width:760px;">How it works: sign up with your background and interests. We review profiles for fit. When there's a good match, we connect mentors and graduates for conversations or project guidance. Matches depend on mentor availability and fit.</p>
+</section>
+
+<section class="section community-form-section" aria-hidden="true">
+  <div class="grid cols-2">
+    <form class="card community-form" data-form="mentor" action="https://docs.google.com/forms/d/e/1FAIpQLSdjS-HR6-jEXbppe3rAiYNbB5lFi1QrucZsdTHbD9KgC_zD9Q/formResponse" method="POST" target="community-form-target">
+      <span class="tag">Mentor Sign Up</span>
+      <h3>Volunteer as a mentor</h3>
+      <label>Full Name<input name="entry.2140000163" type="text" required autocomplete="name" /></label>
+      <label>Email<input name="entry.315037305" type="email" required autocomplete="email" /></label>
+      <label>LinkedIn Profile<input name="entry.1731616459" type="url" placeholder="https://www.linkedin.com/in/..." /></label>
+      <label>What professional roles would you be comfortable coaching, guiding, or supporting others in?<textarea name="entry.2004336816" required></textarea></label>
+      <button class="button primary" type="submit">Submit</button>
+      <p class="quiz-status" role="status"></p>
+    </form>
+    <form class="card community-form" data-form="apprentice" action="https://docs.google.com/forms/d/e/1FAIpQLSfExbacS6Sg9c1zL5S_b9IeU0lMZva6Uxngw67ZHxvVHyaiMw/formResponse" method="POST" target="community-form-target">
+      <span class="tag">Apprenticeship Sign Up</span>
+      <h3>Sign up as a graduate</h3>
+      <label>Full Name<input name="entry.994497683" type="text" required autocomplete="name" /></label>
+      <label>Email<input name="entry.661338569" type="email" required autocomplete="email" /></label>
+      <label>LinkedIn Profile (Optional)<input name="entry.1290756847" type="url" placeholder="https://www.linkedin.com/in/..." /></label>
+      <fieldset class="choice-group">
+        <legend>Which best describes you today?</legend>
+        <label><input name="entry.1132761686" type="radio" value="Recent Graduate" required />Recent Graduate</label>
+        <label><input name="entry.1132761686" type="radio" value="Student" />Student</label>
+        <label><input name="entry.1132761686" type="radio" value="Career Changer" />Career Changer</label>
+        <label><input name="entry.1132761686" type="radio" value="Returning to Workforce" />Returning to Workforce</label>
+        <label><input name="entry.1132761686" type="radio" value="Early Career Professional" />Early Career Professional</label>
+        <label><input name="entry.1132761686" type="radio" value="Other" />Other</label>
+      </fieldset>
+      <label>What professional roles are you interested in pursuing or further developing?<textarea name="entry.178062467" required placeholder="If you're unsure, simply write Not sure yet."></textarea></label>
+      <button class="button primary" type="submit">Submit</button>
+      <p class="quiz-status" role="status"></p>
+    </form>
+  </div>
+  <iframe name="community-form-target" class="hidden-submit-frame" title="Hidden form submission"></iframe>
+</section>
+</main>
+<footer>
+  <div class="footer-inner">
+    <p>&copy; <span class="year"></span> Qentro. Private AI solutions for growing organizations.</p>
+    <div class="footer-links">
+      <a href="free-tools.html">Free Tools</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="community.html">Community</a>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
+</body>
+</html>

@@ -3,63 +3,110 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Free Private AI Assessment | Qentro</title>
-  <meta name="description" content="Request a free Private AI Assessment from Qentro." />
+  <title>Self-Assessment | Qentro</title>
+  <meta name="description" content="Seven quick questions to find out where AI would pay off first in your business. Free written recommendation." />
+  <link rel="icon" type="image/png" href="assets/q-sign.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9BG1PW42DE"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-9BG1PW42DE');
-  </script>
-
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="index.html" aria-label="Qentro home">
-        <img src="assets/q-sign.png" alt="Qentro logo" />
-        <span>Qentro</span>
-      </a>
-      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="index.html#services">Services</a>
-        <a href="index.html#approach">Approach</a>
-        <a href="index.html#why">Why Qentro</a>
-        <a href="apprenticeship.html">Community</a>
-        <a class="nav-cta" href="mailto:customerfirst@qentrotech.com?subject=Qentro%20Private%20AI%20Assessment">Email Qentro</a>
-      </div>
-    </nav>
-  </header>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="sparkgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1fd0dd"/><stop offset="1" stop-color="#7deac6"/></linearGradient></defs></svg>
+<header class="site-header">
+  <nav class="nav">
+    <a class="brand" href="index.html" aria-label="Qentro home">
+      <img src="assets/q-sign.png" alt="Qentro logo" />
+      <b>Qentro</b>
+    </a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false">&#9776;</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a><a href="solutions.html">What We Do</a><a href="how-we-work.html">How We Work</a><a href="pricing.html">Pricing</a><a href="about.html">About</a>
+      <a class="nav-cta" href="assessment.html" style="outline:2px solid #7deac6">Self-Assessment</a>
+    </div>
+  </nav>
+</header>
+<main>
 
-  <main>
-    <section class="assessment-hero section">
-      <p class="eyebrow">Free Private AI Assessment</p>
-      <h1>Explore where private AI can create value for your organization.</h1>
-      <p>Leave your contact information and we will reach out to schedule a complimentary conversation. Only name, company, and email are required.</p>
-    </section>
+<section class="dark page-hero" style="text-align:center;">
+  <div class="section-inner">
+    <p class="eyebrow" style="justify-content:center;"><svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1.5 14.4 9.6 22.5 12 14.4 14.4 12 22.5 9.6 14.4 1.5 12 9.6 9.6Z" fill="url(#sparkgrad)"/></svg> Self-Assessment</p>
+    <h1>Where would AI <span class="grad-text">pay off first?</span></h1>
+    <p class="lead" style="margin-left:auto; margin-right:auto;">Seven quick questions. At the end, leave your email and we'll send a short written recommendation - free, no obligation.</p>
+  </div>
+</section>
 
-    <section class="section form-section">
-      <div class="form-copy">
-        <h2>What this includes</h2>
-        <p>A short discussion about your business goals, AI opportunities, and data privacy concerns. No cost. No obligation.</p>
-      </div>
-      <div class="card form-card">
-        <h2>Request the assessment</h2>
-        <p>Use the Google Form to submit your contact information.</p>
-        <a class="button primary full-button" href="https://forms.gle/cVsRkyvrSt8ifD5a6" target="_blank" rel="noopener">Open Google Form</a>
-      </div>
-    </section>
-  </main>
+<section class="section" style="padding-top:40px;">
+  <div class="card quiz-card">
+    <div class="quiz-top"><span>Qentro Assessment</span><span class="quiz-count">Question 1 of 7</span></div>
+    <div class="quiz-progress"><i></i></div>
 
-  <footer>
-    <p>© <span id="year"></span> Qentro. Private AI solutions for growing organizations.</p>
-  </footer>
+    <div class="quiz-q current" data-key="biggest_challenge" data-multi="true" data-max="3">
+      <h3>1. What's your biggest business challenge? <span class="muted">(Choose up to 3.)</span></h3>
+      <div class="quiz-opts"><button type="button">Increase revenue</button><button type="button">Reduce operating costs</button><button type="button">Improve employee productivity</button><button type="button">Speed up product development</button><button type="button">Improve customer service</button><button type="button">Reduce manual work</button><button type="button">Better decision making</button><button type="button">Other</button></div>
+      <p class="quiz-status" role="status"></p>
+      <button type="button" class="button primary quiz-next">Continue</button>
+    </div>
 
-  <script src="script.js"></script>
+    <div class="quiz-q" data-key="department" data-multi="true">
+      <h3>2. Which department could benefit the most?</h3>
+      <div class="quiz-opts"><button type="button">Operations</button><button type="button">Engineering</button><button type="button">Customer Service</button><button type="button">Sales &amp; Marketing</button><button type="button">Finance</button><button type="button">HR</button><button type="button">Inventory &amp; Supply Chain</button><button type="button">Executive Team</button><button type="button">Other</button></div>
+      <p class="quiz-status" role="status"></p>
+      <button type="button" class="quiz-back">&larr; Back</button>
+      <button type="button" class="button primary quiz-next">Continue</button>
+    </div>
+
+    <div class="quiz-q" data-key="business_statement" data-multi="true">
+      <h3>3. Which statement sounds most like your business?</h3>
+      <div class="quiz-opts"><button type="button">Employees spend too much time searching for information.</button><button type="button">Too many repetitive manual tasks.</button><button type="button">Work depends on a few experienced employees.</button><button type="button">Teams spend too much time creating documents or reports.</button><button type="button">Customer requests take too long to resolve.</button><button type="button">Product development is slower than we'd like.</button><button type="button">We have too many disconnected systems.</button><button type="button">We're not sure where to start.</button></div>
+      <p class="quiz-status" role="status"></p>
+      <button type="button" class="quiz-back">&larr; Back</button>
+      <button type="button" class="button primary quiz-next">Continue</button>
+    </div>
+
+    <div class="quiz-q" data-key="business_outcome">
+      <h3>4. What business outcome are you hoping to achieve?</h3>
+      <div class="quiz-opts"><button type="button">Grow revenue</button><button type="button">Save employee time</button><button type="button">Reduce costs</button><button type="button">Improve customer satisfaction</button><button type="button">Launch products faster</button><button type="button">Improve operational efficiency</button></div>
+      <button type="button" class="quiz-back">&larr; Back</button>
+    </div>
+
+    <div class="quiz-q" data-key="privacy_importance">
+      <h3>5. How important is data privacy when adopting AI?</h3>
+      <div class="quiz-opts"><button type="button">Critical - Our data must stay private and under our control.</button><button type="button">Important - We'd prefer private solutions whenever practical.</button><button type="button">Somewhat Important - It depends on the use case.</button><button type="button">Not a Major Concern - We're comfortable using public AI services.</button></div>
+      <button type="button" class="quiz-back">&larr; Back</button>
+    </div>
+
+    <div class="quiz-q" data-key="timeline">
+      <h3>6. How soon would you want something working?</h3>
+      <div class="quiz-opts"><button type="button">Within 30 days</button><button type="button">Within 3 months</button><button type="button">Within 6-12 months</button><button type="button">No timeline - gathering information</button></div>
+      <button type="button" class="quiz-back">&larr; Back</button>
+    </div>
+
+    <div class="quiz-q" id="contact-form" data-key="contact">
+      <h3>7. Where should we send your personalized recommendations?</h3>
+      <p class="muted" style="font-size:.95rem;">Only full name, company, and email are required. Your answers are sent by email - nothing is stored on a server.</p>
+      <label for="q-name">Full name</label><input id="q-name" type="text" placeholder="Your full name" autocomplete="name" required />
+      <label for="q-company">Company</label><input id="q-company" type="text" placeholder="Company name" autocomplete="organization" required />
+      <label for="q-email">Email</label><input id="q-email" type="email" placeholder="you@company.com" autocomplete="email" required />
+      <button id="quiz-submit" class="button primary" style="width:100%; margin-top:20px;">Send my recommendation</button>
+      <p class="quiz-status" role="status"></p>
+      <button type="button" class="quiz-back">&larr; Back</button>
+    </div>
+  </div>
+  <noscript><p class="muted" style="text-align:center; margin-top:20px;">The assessment needs JavaScript. You can also email us directly: customerfirst@qentrotech.com</p></noscript>
+</section>
+</main>
+<footer>
+  <div class="footer-inner">
+    <p>&copy; <span class="year"></span> Qentro. Private AI solutions for growing organizations.</p>
+    <div class="footer-links">
+      <a href="free-tools.html">Free Tools</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="about.html">About</a>
+      <a href="community.html">Community</a>
+    </div>
+  </div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
