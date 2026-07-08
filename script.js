@@ -61,6 +61,7 @@ const askAiToggle = askAiWidget.querySelector('.ask-ai-toggle');
 const askAiPanel = askAiWidget.querySelector('.ask-ai-panel');
 const askAiClose = askAiWidget.querySelector('.ask-ai-close');
 const askAiMessages = askAiWidget.querySelector('.ask-ai-messages');
+const askAiPrompts = askAiWidget.querySelector('.ask-ai-prompts');
 const askAiForm = askAiWidget.querySelector('.ask-ai-form');
 const askAiInput = askAiWidget.querySelector('.ask-ai-form input');
 
@@ -72,6 +73,7 @@ function setAskAiOpen(open) {
 }
 
 function addAskAiMessage(text, type = 'bot') {
+  if (type === 'user') hideAskAiPrompts();
   const message = document.createElement('div');
   message.className = `ask-ai-message ${type}`;
   message.textContent = text;
@@ -79,39 +81,114 @@ function addAskAiMessage(text, type = 'bot') {
   askAiMessages.scrollTop = askAiMessages.scrollHeight;
 }
 
-function answerAskAi(question) {
-  const q = question.toLowerCase();
-  if (q.includes('privacy') || q.includes('local') || q.includes('cloud') || q.includes('hybrid')) {
-    return 'Qentro offers three privacy levels: Fully Local for your own infrastructure, Private Cloud for a dedicated secure cloud environment, and Hybrid for a balanced mix of on-premises and cloud AI.';
+function hideAskAiPrompts() {
+  if (askAiPrompts) askAiPrompts.hidden = true;
+}
+
+let websiteSearchIndexPromise;
+
+function normalizeSearchText(text) {
+  return (text || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function tokenizeSearchText(text) {
+  const stopWords = new Set([
+    'a', 'an', 'and', 'are', 'as', 'at', 'be', 'but', 'by', 'can', 'do', 'for', 'from',
+    'how', 'i', 'in', 'is', 'it', 'of', 'on', 'or', 'our', 'the', 'their', 'this', 'to',
+    'we', 'what', 'where', 'with', 'you', 'your'
+  ]);
+  return normalizeSearchText(text)
+    .split(' ')
+    .filter(word => word.length > 2 && !stopWords.has(word));
+}
+
+function buildCurrentPageIndex() {
+  const pageTitle = document.title.replace(/\s*\|\s*Qentro\s*$/, '') || 'Current page';
+  const nodes = Array.from(document.querySelectorAll('main h1, main h2, main h3, main p, main li'));
+  return nodes
+    .map(node => node.textContent.trim())
+    .filter(text => text.length > 30)
+    .map((text, index) => ({
+      title: pageTitle,
+      url: window.location.pathname.split('/').pop() || 'index.html',
+      heading: pageTitle,
+      text,
+      id: `current-${index}`
+    }));
+}
+
+function loadWebsiteSearchIndex() {
+  if (!websiteSearchIndexPromise) {
+    websiteSearchIndexPromise = fetch('website-search-index.json', { cache: 'no-store' })
+      .then(response => {
+        if (!response.ok) throw new Error('Search index unavailable');
+        return response.json();
+      })
+      .then(data => Array.isArray(data.pages) ? data.pages : [])
+      .catch(() => buildCurrentPageIndex());
   }
-  if (q.includes('price') || q.includes('cost') || q.includes('pricing')) {
-    return 'Most engagements start with a free assessment. Ongoing partnership starts from $500/month, and fixed-scope projects are quoted upfront.';
+  return websiteSearchIndexPromise;
+}
+
+function scoreSearchItem(item, queryTokens, normalizedQuery) {
+  const haystack = normalizeSearchText(`${item.title} ${item.heading} ${item.text}`);
+  let score = 0;
+  queryTokens.forEach(token => {
+    if (haystack.includes(token)) score += 4;
+    if (normalizeSearchText(item.title).includes(token)) score += 3;
+    if (normalizeSearchText(item.heading).includes(token)) score += 2;
+  });
+  if (normalizedQuery && haystack.includes(normalizedQuery)) score += 8;
+  return score;
+}
+
+async function answerAskAi(question) {
+  const queryTokens = tokenizeSearchText(question);
+  if (!queryTokens.length) {
+    return 'Ask a little more specifically, like "How do privacy levels work?" or "What can AI do for operations?"';
   }
-  if (q.includes('start') || q.includes('assessment') || q.includes('begin')) {
-    return 'The best first step is the 2-minute self-assessment. It helps identify where AI is most likely to create value first.';
+
+  const index = await loadWebsiteSearchIndex();
+  const normalizedQuery = normalizeSearchText(question);
+  const best = index
+    .map(item => ({ item, score: scoreSearchItem(item, queryTokens, normalizedQuery) }))
+    .filter(result => result.score > 0)
+    .sort((a, b) => b.score - a.score)[0];
+
+  if (!best) {
+    return 'I could not find a strong match in the website content. Try asking about privacy levels, pricing, business outcomes, the process, or Qentro services.';
   }
-  if (q.includes('product') || q.includes('engineering') || q.includes('operations') || q.includes('support')) {
-    return 'Qentro focuses on practical AI for product innovation, engineering, operations, maintenance, inventory, supply chain, customer support, and leadership workflows.';
-  }
-  return 'A good starting question is: where is your team losing the most time today? Qentro can help turn that into a secure AI use case with the right privacy level.';
+
+  const location = best.item.heading && best.item.heading !== best.item.title
+    ? `${best.item.title} - ${best.item.heading}`
+    : best.item.title;
+  return `${location}: ${best.item.text}`;
 }
 
 askAiToggle.addEventListener('click', () => setAskAiOpen(!askAiWidget.classList.contains('open')));
 askAiClose.addEventListener('click', () => setAskAiOpen(false));
 askAiWidget.querySelectorAll('.ask-ai-prompts button').forEach(button => {
-  button.addEventListener('click', () => {
+  button.addEventListener('click', async () => {
     const question = button.textContent.trim();
+    hideAskAiPrompts();
     addAskAiMessage(question, 'user');
-    addAskAiMessage(answerAskAi(question));
+    addAskAiMessage('Searching the website...', 'bot');
+    askAiMessages.lastElementChild.textContent = await answerAskAi(question);
   });
 });
-askAiForm.addEventListener('submit', (e) => {
+askAiForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   const question = askAiInput.value.trim();
   if (!question) return;
   askAiInput.value = '';
+  hideAskAiPrompts();
   addAskAiMessage(question, 'user');
-  addAskAiMessage(answerAskAi(question));
+  addAskAiMessage('Searching the website...', 'bot');
+  askAiMessages.lastElementChild.textContent = await answerAskAi(question);
 });
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape' && askAiWidget.classList.contains('open')) setAskAiOpen(false);
