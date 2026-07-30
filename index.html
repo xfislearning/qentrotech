@@ -175,6 +175,8 @@
 
 
   .native-contact-form{display:grid;gap:18px;text-align:left}
+  .native-contact-form .name-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  @media(max-width:600px){.native-contact-form .name-row{grid-template-columns:1fr;}}
   .native-contact-form label{display:grid;gap:8px;font-weight:700;color:#f5f7fb}
   .native-contact-form input,.native-contact-form textarea{width:100%;box-sizing:border-box;border:1px solid rgba(255,255,255,.18);border-radius:10px;background:rgba(255,255,255,.06);color:#fff;font:inherit;padding:13px 14px;outline:none}
   .native-contact-form input:focus,.native-contact-form textarea:focus{border-color:#8fb0ff;box-shadow:0 0 0 3px rgba(143,176,255,.14)}
@@ -183,6 +185,8 @@
   .form-submit-button{justify-self:start;border:0;border-radius:999px;background:linear-gradient(135deg,#87a9ff,#b6c9ff);color:#07111f;font-weight:800;padding:13px 24px;cursor:pointer}
   .form-status{min-height:1.4em;margin:0;color:var(--muted)}
   .hidden-submit-frame{display:none;width:0;height:0;border:0}
+  .gform-embed{width:100%;height:900px;border:0;display:block;}
+  @media(max-width:600px){.gform-embed{height:1050px;}}
 
 </style>
 
@@ -300,15 +304,13 @@ gtag('config', 'G-9BG1PW42DE');
 <button aria-controls="qentro-contact-form" aria-expanded="false" class="form-toggle-button" data-contact-form="" type="button">Send us a message</button>
 </div>
 <div class="form-card contact-form-panel" hidden="" id="qentro-contact-form">
-<form action="https://formsubmit.co/contact@qentrotech.com" class="native-contact-form" method="POST" target="qentro-contact-submit-frame">
-<input name="_subject" type="hidden" value="New Qentro website message"/>
-<input name="_template" type="hidden" value="table"/>
-<input name="_captcha" type="hidden" value="false"/>
-<label>Full Name <span aria-hidden="true">*</span><input autocomplete="name" name="Full Name" required="" type="text"/></label>
-<label>Email <span aria-hidden="true">*</span><input autocomplete="email" name="Email" required="" type="email"/></label>
-<label>Company<input autocomplete="organization" name="Company" type="text"/></label>
-<label>Phone<input autocomplete="tel" name="Phone" type="tel"/></label>
-<label>Tell me a little about your business… <span class="optional">(optional)</span><textarea name="Message" rows="6"></textarea></label>
+<form action="https://docs.google.com/forms/d/e/1FAIpQLSex6YT0MQkSsGTTHoNMSVCOBAkObtei1m2Qg0R-Mzyxu3bsJQ/formResponse" class="native-contact-form" method="POST" target="qentro-contact-submit-frame">
+<input name="fvv" type="hidden" value="1"/>
+<input name="pageHistory" type="hidden" value="0"/>
+<div class="name-row"><label>First Name <span aria-hidden="true">*</span><input autocomplete="given-name" name="entry.1347663904" required type="text"/></label><label>Last Name <span aria-hidden="true">*</span><input autocomplete="family-name" name="entry.229136176" required type="text"/></label></div>
+<label>Email <span aria-hidden="true">*</span><input autocomplete="email" name="entry.2048191281" required type="email"/></label>
+<label>Company Name<input autocomplete="organization" name="entry.1838339604" type="text"/></label>
+<label>Tell us a little about your business… <span class="optional">(optional)</span><textarea name="entry.589843358" rows="6"></textarea></label>
 <button class="form-submit-button" type="submit">Submit</button>
 <p aria-live="polite" class="form-status" role="status"></p>
 </form>
@@ -410,5 +412,3 @@ document.querySelectorAll('.native-contact-form').forEach(function(form){
   }
 });
 </script>
-</body>
-</html>

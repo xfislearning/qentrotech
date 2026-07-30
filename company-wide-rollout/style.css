@@ -205,6 +205,8 @@ section{padding:82px 0}.divider{background:var(--line)}.sec-label{border:1px sol
 .native-contact-form .btn-primary{justify-self:start}
 .form-status{min-height:1.4em;margin:0;color:var(--muted)}
 .hidden-submit-frame{display:none;width:0;height:0;border:0}
+.gform-embed{width:100%;height:900px;border:0;display:block;}
+@media(max-width:600px){.gform-embed{height:1050px;}}
 
 @media(max-width:600px){.embedded-contact-form{padding:20px}.native-contact-form .btn-primary{width:100%;text-align:center}.contact-methods{flex-direction:column;align-items:stretch}.contact-methods .btn-primary,.contact-methods .btn-ghost{text-align:center}}
 

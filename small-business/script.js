@@ -65,18 +65,17 @@ document.querySelectorAll('.contact-form-trigger').forEach(function(button){
   });
 });
 
-
 document.querySelectorAll('.native-contact-form').forEach(function(form){
   var frameName=form.getAttribute('target');
   var frame=frameName ? document.querySelector('iframe[name="'+frameName+'"]') : null;
   form.dataset.submitted='false';
-  form.addEventListener('submit',function(){
+  form.addEventListener('submit', function(){
     form.dataset.submitted='true';
     var status=form.querySelector('.form-status');
     if(status) status.textContent='Sending…';
   });
   if(frame){
-    frame.addEventListener('load',function(){
+    frame.addEventListener('load', function(){
       if(form.dataset.submitted!=='true') return;
       form.dataset.submitted='false';
       qentroTrack('form_submitted');
@@ -88,7 +87,7 @@ document.querySelectorAll('.native-contact-form').forEach(function(form){
       if(button){
         button.setAttribute('aria-expanded','false');
         button.textContent='Message sent';
-        window.setTimeout(function(){button.textContent='Send us a message';},2500);
+        window.setTimeout(function(){ button.textContent='Send us a message'; },2500);
       }
     });
   }
