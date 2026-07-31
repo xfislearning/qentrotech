@@ -20,6 +20,14 @@ document.querySelectorAll('.menu-toggle').forEach(function (btn) {
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 });
+document.addEventListener('click', function (e) {
+  var links = document.querySelector('.nav-links');
+  var btn = document.querySelector('.menu-toggle');
+  if (!links || !links.classList.contains('open')) return;
+  if (links.contains(e.target) || (btn && btn.contains(e.target))) return;
+  links.classList.remove('open');
+  if (btn) btn.setAttribute('aria-expanded', 'false');
+});
 document.querySelectorAll('.year').forEach(function (el) {
   el.textContent = new Date().getFullYear();
 });

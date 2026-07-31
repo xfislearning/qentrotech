@@ -167,6 +167,7 @@
 @media(max-width:900px){ .service-grid{grid-template-columns:1fr 1fr}.founder-grid,.contact-grid{grid-template-columns:1fr}.profile-card{position:static} }
   @media(max-width:600px){ .service-grid{grid-template-columns:1fr} }
 .contact-intro{max-width:720px;margin:0 auto;text-align:center;}
+.contact-intro p.sub{color:var(--text-mute);margin:0 0 18px;font-size:15px;}
   .contact-or{color:var(--text-mute);margin:18px 0 14px;text-transform:uppercase;font-size:12px;letter-spacing:.12em;}
   .form-toggle-button{font:600 15px var(--body);color:#06142a;background:var(--grad);border:0;border-radius:10px;padding:13px 22px;cursor:pointer;}
   .form-toggle-button:hover{filter:brightness(1.06);transform:translateY(-1px);}
@@ -232,7 +233,7 @@ gtag('config', 'G-9BG1PW42DE');
 <p>Qentro helps organizations plan AI adoption, automate business work, build intelligent agents, and measure the results.</p>
 </div>
 <div class="service-grid">
-<article class="info-card"><div class="service-icon" aria-hidden="true"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg></div><h3>AI Strategy</h3><p>Identify the right privacy level, use cases, priorities, and practical path forward.</p></article>
+<article class="info-card"><div class="service-icon" aria-hidden="true"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><circle cx="12" cy="12" r="3"></circle><path d="M12 2v3M12 19v3M2 12h3M19 12h3"></path></svg></div><h3>AI Strategy</h3><p>Ensure AI investments support your business goals. Identify high-value opportunities, prioritize initiatives, and build a practical roadmap.</p></article>
 <article class="info-card"><div class="service-icon" aria-hidden="true"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><path d="M4 7h10M10 3l4 4-4 4"></path><path d="M20 17H10M14 13l-4 4 4 4"></path></svg></div><h3>Business Automation</h3><p>Reduce repetitive work and connect everyday processes with useful, maintainable automation.</p></article>
 <article class="info-card"><div class="service-icon" aria-hidden="true"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="3"></rect><path d="M9 11h.01M15 11h.01M9 15h6M12 3v3"></path></svg></div><h3>Intelligent Assistants</h3><p>Design assistants and agents that work with your knowledge, tools, and approval processes.</p></article>
 <article class="info-card"><div class="service-icon" aria-hidden="true"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M7 15v2M12 11v6M17 8v9"></path></svg></div><h3>Measurable Impact</h3><p>Define outcomes, pilot quickly, and turn successful ideas into measurable business results.</p></article>
@@ -256,7 +257,7 @@ gtag('config', 'G-9BG1PW42DE');
 <a class="pillar-card" data-market="data_center" href="data-center-ops/index.html">
 <div class="pillar-icon"><svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24"><rect height="7" rx="1.2" width="18" x="3" y="3"></rect><rect height="7" rx="1.2" width="18" x="3" y="14"></rect><circle cx="7.5" cy="6.5" fill="currentColor" r="0.6"></circle><circle cx="7.5" cy="17.5" fill="currentColor" r="0.6"></circle></svg></div>
 <h3>Data Center Operations</h3>
-<p>Standing up a new data center but not sure how to run it? I build the process and tools to fit your team — not a rigid enterprise platform you have to bend around.</p>
+<p>Standing up a new data center but not sure how to run it? We build the process and tools to fit your team — not a rigid enterprise platform you have to bend around.</p>
 <span class="pillar-cta">See the data center ops site →</span>
 </a>
 <a class="pillar-card" data-market="company_rollout" href="company-wide-rollout/index.html">
@@ -296,9 +297,10 @@ gtag('config', 'G-9BG1PW42DE');
 </section>
 <section class="content-section contact-section" id="contact">
 <div class="wrap">
-<div class="sec-head"><div class="eyebrow">Contact</div><h2>Get in Touch</h2></div>
+<div class="sec-head"><div class="eyebrow">Contact</div></div>
 <div class="contact-card contact-intro">
-<h3>Contact</h3>
+<h3>We'd like to hear from you</h3>
+<p class="sub">Reach Qentro directly by email or send us a message.</p>
 <a class="email-link" href="mailto:contact@qentrotech.com">contact@qentrotech.com</a>
 <div class="contact-or">or</div>
 <button aria-controls="qentro-contact-form" aria-expanded="false" class="form-toggle-button" data-contact-form="" type="button">Send us a message</button>
@@ -356,6 +358,14 @@ document.querySelectorAll('.menu-toggle').forEach(function(btn){
     var open=links.classList.toggle('open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
+});
+document.addEventListener('click', function(e){
+  var links=document.querySelector('.nav-links');
+  var btn=document.querySelector('.menu-toggle');
+  if(!links || !links.classList.contains('open')) return;
+  if(links.contains(e.target) || (btn && btn.contains(e.target))) return;
+  links.classList.remove('open');
+  if(btn) btn.setAttribute('aria-expanded','false');
 });
 document.querySelectorAll('.nav-links a').forEach(function(link){
   link.addEventListener('click', function(){
