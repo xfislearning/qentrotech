@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.qentrotech.com/</loc></url>
+  <url><loc>https://www.qentrotech.com/small-business/</loc></url>
+  <url><loc>https://www.qentrotech.com/data-center-operations/</loc></url>
   <url><loc>https://www.qentrotech.com/connect/</loc></url>
-  <url><loc>https://www.qentrotech.com/schedule/</loc></url>
+  <url>
+<loc>https://www.qentrotech.com/private-ai/</loc>
+</url>
 </urlset>
